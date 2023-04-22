@@ -16,7 +16,32 @@ function divide(numberA,numberB){
 }
 
 
-console.log(add(2 , 10));
-console.log(subtract(2 , 10));
-console.log(multiply(2 , 10));
-console.log(divide(2 , 10));
+// function that gets  numbers and which operation to preform
+function operate(numberA , operator , numberB){
+    switch (operator) {
+        case '+':
+
+            return add(numberA,numberB);
+
+        case '-':
+            
+            return subtract(numberA,numberB);
+        
+        case '*':
+
+            return multiply(numberA,numberB);
+
+        case '/':
+            
+            return divide(numberA,numberB);
+    
+        default:
+            break;
+    }
+
+}
+
+console.log(operate(2, '+', 10));
+console.log(operate(2, '-', 10));
+console.log(operate(2, '*', 10));
+console.log(operate(2, '/', 10));
