@@ -16,23 +16,18 @@ function divide(numberA,numberB){
 }
 
 
-// function that gets  numbers and which operation to preform
 function operate(numberA , operator , numberB){
     switch (operator) {
         case '+':
-
             return add(numberA,numberB);
 
-        case '-':
-            
+        case '-':        
             return subtract(numberA,numberB);
-        
+     
         case '*':
-
             return multiply(numberA,numberB);
 
         case '/':
-            
             return divide(numberA,numberB);
     
         default:
