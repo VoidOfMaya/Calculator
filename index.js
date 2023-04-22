@@ -4,7 +4,6 @@
 function add(numberA , numberB){
     return (numberA + numberB);
 }
-
 function subtract(numberA,numberB){
     return (numberA - numberB);
 }
@@ -36,7 +35,34 @@ function operate(numberA , operator , numberB){
 
 }
 
-console.log(operate(2, '+', 10));
-console.log(operate(2, '-', 10));
-console.log(operate(2, '*', 10));
-console.log(operate(2, '/', 10));
+
+function populateDisplay(){
+    
+    const display = document.querySelector('#display');
+    const buttons = document.querySelectorAll('button');
+    let argArray =[];
+    let lastNumber;
+
+    buttons.forEach((button) => button.addEventListener('click', () =>{
+        
+        
+        button.className === 'digit'?argArray.push(button.id): button.className;
+        
+        display.textContent= argArray.join('');
+
+        if(button.className ==='operator'){
+            lastNumber = Number(argArray.join(''));
+            console.log(`${lastNumber} is type of ${typeof lastNumber}`);
+        }
+    }))
+    
+    
+
+}
+populateDisplay();
+
+
+//console.log(operate(2, '+', 10));
+//console.log(operate(2, '-', 10));
+//console.log(operate(2, '*', 10));
+//console.log(operate(2, '/', 10));
