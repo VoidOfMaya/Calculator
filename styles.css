@@ -1,17 +1,19 @@
 .calc-container{
-    width: 600px;
+    width: 500px;
     height: 600px;
     display: flex;
     margin:auto;
     justify-content: center;
-    border: 1px solid black;
+    
     flex-wrap: wrap;
     flex-direction: column;
+    background-color: rgb(255, 255, 255);
 
 }
 .display{
     border: 2px solid black;
-    padding: 20px;
+    border-radius: 10px;
+    padding: 50px;
 }
 .row{
     display: flex;
@@ -27,4 +29,23 @@
     justify-content: center;
     flex-wrap: wrap;
     flex: 1;
+
+    font-size: 34px;
+    color: rgb(88, 87, 87);
+    border: 2px solid rgb(150, 192, 202);
+
+    border-radius: 10px;
+}
+.row button#clr{
+    flex: 2;
+}
+.row button#zero{
+    flex: 2;
+}
+.row button.digit{
+
+}
+.row button.operator{
+    color: rgb(18, 186, 192);
+    background-color: rgb(209, 221, 219);    
 }
