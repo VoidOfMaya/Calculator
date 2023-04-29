@@ -2,32 +2,32 @@
   // key note for futer referance, calculation functions take  variables of  type Number
 
 function add(numberA , numberB){
-    return (numberA + numberB);
+    return Number(numberA + numberB);
 }
 function subtract(numberA,numberB){
-    return (numberA - numberB);
+    return Number(numberA - numberB);
 }
 function multiply(numberA,numberB){
-    return (numberA * numberB);
+    return Number(numberA * numberB);
 }
 function divide(numberA,numberB){
-    return (numberA / numberB);
+    return Number(numberA / numberB);
 }
 
 
 function operate(numberA , operator , numberB){
     switch (operator) {
         case '+':
-            return add(numberA,numberB);
+            add(numberA,numberB);
 
         case '-':        
-            return subtract(numberA,numberB);
+            subtract(numberA,numberB);
      
         case '*':
-            return multiply(numberA,numberB);
+            multiply(numberA,numberB);
 
         case '/':
-            return divide(numberA,numberB);
+            divide(numberA,numberB);
     
         default:
             break;
@@ -35,25 +35,40 @@ function operate(numberA , operator , numberB){
 
 }
 
-
 function populateDisplay(){
     
-    const display = document.querySelector('#display');
-    const buttons = document.querySelectorAll('button');
-    let argArray =[];
-    let lastNumber;
+    const display = document.querySelector('.display');
+    const buttons = document.querySelectorAll('.row button');
+    const displayArray =[];
+    let bufferArray =[];
+    let numberHolder;
+    let firstNumber =0;
+    let lastNumber =0;
+    let choosenOperator;
+    buttons.forEach((btn) => btn.addEventListener('click', () =>{
+        
+        //display content on screen
+        displayArray.push(btn.id);
+        display.textContent= displayArray.join('');
 
-    buttons.forEach((button) => button.addEventListener('click', () =>{
-        
-        
-        button.className === 'digit'?argArray.push(button.id): button.className;
-        
-        display.textContent= argArray.join('');
-
-        if(button.className ==='operator'){
-            lastNumber = Number(argArray.join(''));
-            console.log(`${lastNumber} is type of ${typeof lastNumber}`);
+        //populate relevant variables required for the operate function
+        if( btn.className ==='digit'){
+            bufferArray.push(btn.id);
         }
+        if (btn.className === 'operator'){
+            choosenOperator = btn.id;
+            firstNumber === 0? firstNumber = bufferArray.join('') : lastNumber = bufferArray.join('');
+            bufferArray =[];
+            if (choosenOperator ==='='){
+                console.log(operate(firstNumber, choosenOperator,lastNumber));
+            }
+        
+        }
+        //console.log(`${choosenOperator} is of type ${typeof choosenOperator}`);
+
+        console.log(` first = ${firstNumber} , operator = ${choosenOperator} , second = ${lastNumber} , placeholder = ${bufferArray.join('')}`);
+        
+
     }))
     
     

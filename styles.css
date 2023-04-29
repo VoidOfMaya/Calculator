@@ -1,0 +1,30 @@
+.calc-container{
+    width: 600px;
+    height: 600px;
+    display: flex;
+    margin:auto;
+    justify-content: center;
+    border: 1px solid black;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+}
+.display{
+    border: 2px solid black;
+    padding: 20px;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+
+}
+.row button{
+    display: flex;
+    
+    
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 1;
+}
