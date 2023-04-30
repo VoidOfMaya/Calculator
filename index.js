@@ -18,16 +18,16 @@ function divide(numberA,numberB){
 function operate(numberA , operator , numberB){
     switch (operator) {
         case '+':
-            add(numberA,numberB);
+            return add(numberA,numberB);
 
         case '-':        
-            subtract(numberA,numberB);
+            return subtract(numberA,numberB);
      
         case '*':
-            multiply(numberA,numberB);
+            return multiply(numberA,numberB);
 
         case '/':
-            divide(numberA,numberB);
+            return divide(numberA,numberB);
     
         default:
             break;
@@ -41,7 +41,7 @@ function populateDisplay(){
     const buttons = document.querySelectorAll('.row button');
     const displayArray =[];
     let bufferArray =[];
-    let numberHolder;
+    let chainNumber =0;
     let firstNumber =0;
     let lastNumber =0;
     let choosenOperator;
@@ -55,18 +55,23 @@ function populateDisplay(){
         if( btn.className ==='digit'){
             bufferArray.push(btn.id);
         }
-        if (btn.className === 'operator'){
+        if (choosenOperator !== 'undefined' && btn.className === 'operator'){
+            //assignes an operator to a variable
             choosenOperator = btn.id;
+
+            // proccesses numebrs asigned to buffer and pushes them inside variables + calls the operate function
             firstNumber === 0? firstNumber = bufferArray.join('') : lastNumber = bufferArray.join('');
+
             bufferArray =[];
             if (choosenOperator ==='='){
-                console.log(operate(firstNumber, choosenOperator,lastNumber));
+
+                chainNumber = operate(firstNumber, choosenOperator,lastNumber);
             }
         
         }
         //console.log(`${choosenOperator} is of type ${typeof choosenOperator}`);
 
-        console.log(` first = ${firstNumber} , operator = ${choosenOperator} , second = ${lastNumber} , placeholder = ${bufferArray.join('')}`);
+        console.log(` first = ${firstNumber} , operator = ${choosenOperator} , second = ${lastNumber} , buffer = ${bufferArray.join('')} \nchain number : ${chainNumber}`);
         
 
     }))
@@ -75,6 +80,7 @@ function populateDisplay(){
 
 }
 populateDisplay();
+
 
 
 //console.log(operate(2, '+', 10));

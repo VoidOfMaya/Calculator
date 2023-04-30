@@ -42,9 +42,7 @@
 .row button#clr{
     flex: 2;
 }
-.row button.digit-zero{
-    flex: 2;
-}
+
 
 .row button.operator{
     color: rgb(18, 186, 192);
