@@ -26,7 +26,6 @@ function populateDisplay(){
 
         if (currentNum.length <= 12){
             currentNum +=btn.id;
-            console.log(`${currentNum}`);
             currentDisNumber.textContent = currentNum;    
         }
         
@@ -36,19 +35,34 @@ function populateDisplay(){
         if(op.id ==='clear'){
             currentNum= '';
             lastNum='';
-            operator='';
-
-            
+            operator=''; 
         }
-        operator = op.id;
-        lastDisNumber.textContent = currentNum + " " + operator;
-        lastNum = currentNum;
-        currentNum =''
-        currentDisNumber.textContent= '';
+        if(lastNum ===""){
+            lastNum = currentNum;
+            opCheck(op.id);
+        } else if(currentNum ===""){
+            opCheck(op.id)
+        }else{
+            operate();
+            operator = op.id;
+            currentDisNumber.textContent= '0';
+            lastDisNumber.textContent= lastNum +' ' + operator;
+            currentNum='';
+        }
+        console.log(`operator : ${operator}`)
+        console.log(`last number: ${lastNum}`)
+        console.log(`current number: ${currentNum}`)
+        
 
-
-        console.log(`last number: ${lastNum} operator: ${operator} current number: ${currentNum}`);
     }))
+
+    function opCheck(text){
+        operator =text;
+        lastDisNumber.textContent = lastNum + " " + operator;
+        currentDisNumber.textContent= '0';
+        currentNum = "";
+    }
+    
 
     
 
@@ -76,9 +90,3 @@ function populateDisplay(){
 }
 populateDisplay();
 
-
-
-//console.log(operate(2, '+', 10));
-//console.log(operate(2, '-', 10));
-//console.log(operate(2, '*', 10));
-//console.log(operate(2, '/', 10));
