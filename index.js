@@ -10,7 +10,14 @@ function populateDisplay(){
     const number = document.querySelectorAll('.digit');
     const operators = document.querySelectorAll('.operator');
     const equal = document.querySelector('.equal');
-    equal.addEventListener('click', operate);
+    equal.addEventListener('click', ()=>{
+        if(currentNum != '' && lastNum != ''){
+            operate();
+        }
+    });
+    const clear= document.querySelector('.clear');
+    clear.addEventListener('click', clearCalc)
+
     let currentNum= '';
     let lastNum='';
     let operator;
@@ -26,11 +33,19 @@ function populateDisplay(){
     }))
     
     operators.forEach((op) => op.addEventListener('click', ()=>{
+        if(op.id ==='clear'){
+            currentNum= '';
+            lastNum='';
+            operator='';
+
+            
+        }
         operator = op.id;
         lastDisNumber.textContent = currentNum + " " + operator;
         lastNum = currentNum;
         currentNum =''
         currentDisNumber.textContent= '';
+
 
         console.log(`last number: ${lastNum} operator: ${operator} current number: ${currentNum}`);
     }))
@@ -41,13 +56,20 @@ function populateDisplay(){
         currentNum = Number(currentNum);
         lastNum = Number(lastNum);
 
-        operator === '+'?lastNum += currentNum :lastNum;
-        operator === '-'?lastNum -= currentNum :lastNum;
-        operator === '*'?lastNum *= currentNum :lastNum;
-        operator === '/'?lastNum /= currentNum :lastNum;
+        operator === '+'?lastNum += currentNum :null;
+        operator === '-'?lastNum -= currentNum :null;
+        operator === '*'?lastNum *= currentNum :null;
+        operator === '/'?lastNum /= currentNum :null;
 
         lastDisNumber.textContent ='';
         currentDisNumber.textContent= lastNum;
+    }
+    function clearCalc(){
+        operator ='';
+        lastNum = '';
+        currentNum='';
+        lastDisNumber.textContent ='';
+        currentDisNumber.textContent ='';
     }
     
 

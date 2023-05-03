@@ -58,7 +58,8 @@
 }
 
 
-.row button.operator{
+.row button.operator,
+.clear{
     color: rgb(18, 186, 192);
     background-color: rgb(209, 221, 219);    
 }
