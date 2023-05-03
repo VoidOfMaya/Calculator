@@ -49,9 +49,6 @@ function populateDisplay(){
             lastDisNumber.textContent= lastNum +' ' + operator;
             currentNum='';
         }
-        console.log(`operator : ${operator}`)
-        console.log(`last number: ${lastNum}`)
-        console.log(`current number: ${currentNum}`)
         
 
     }))
@@ -73,17 +70,26 @@ function populateDisplay(){
         operator === '+'?lastNum += currentNum :null;
         operator === '-'?lastNum -= currentNum :null;
         operator === '*'?lastNum *= currentNum :null;
-        operator === '/'?lastNum /= currentNum :null;
+        if(operator === '/'){
+            if(currentNum ===0){
+                lastNum = "divide by 0 Error"
+            }else{
+                lastNum /= currentNum;
+  
+            }
+            console.log(lastNum.toString().length);
+        }
 
         lastDisNumber.textContent ='';
-        currentDisNumber.textContent= lastNum;
+        lastNum.toString().length >= 12? currentDisNumber.textContent= lastNum.toString().slice(0.12) + '...' :
+                                         currentDisNumber.textContent= lastNum;
     }
     function clearCalc(){
         operator ='';
         lastNum = '';
         currentNum='';
-        lastDisNumber.textContent ='';
-        currentDisNumber.textContent ='';
+        lastDisNumber.textContent ='0';
+        currentDisNumber.textContent ='0';
     }
     
 
